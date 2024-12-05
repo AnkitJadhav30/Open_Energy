@@ -1,0 +1,12 @@
+node_modules/
+cypress/screenshots/
+cypress/videos/
+.env
+cypress/e2e/Basic/
+cypress/e2e/CypressBasicCommands/
+cypress/e2e/EnergyAutomation/
+Cypress-demo/
+cypress/PageObjects/
+cypress/downloads/
+cypress/fixtures/
+cypress/support/
