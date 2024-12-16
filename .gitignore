@@ -9,4 +9,4 @@ Cypress-demo/
 cypress/PageObjects/
 cypress/downloads/
 cypress/fixtures/
-cypress/support/
+cypress/e2e/CheckUrls/
