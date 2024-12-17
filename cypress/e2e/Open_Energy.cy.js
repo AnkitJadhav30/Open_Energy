@@ -52,6 +52,8 @@ cy.get("input[aria-label='Digit 4']").type('5');
 //Submit otp
 cy.get("button[type='submit']").click();
 
+cy.wait(3000);
+
 
 //CDR page Popup
 // cy.get("button[class='sc-6392884d-0 sc-6392884d-1 exNNAT ckOEOs']").click();
@@ -94,7 +96,7 @@ cy.window().then((win) => {
     cy.get('#login').type('ankittesting@yopmail.com'); // Type the email address
     cy.wait(5000);
     cy.get('.material-icons-outlined.f36').click(); // Click on the check email button
-    cy.wait(5000);
+    cy.wait(10000);
     // Extract the OTP from the email body
 
     
@@ -103,7 +105,7 @@ cy.window().then((win) => {
 // Wait for the iframe to be visible
 cy.get('#ifmail').should('be.visible');
 
-cy.wait(5000);
+cy.wait(10000);
 // Access the iframe content
 cy.get('#ifmail')
   .its('0.contentDocument.body') // Access the iframe's body
@@ -125,6 +127,8 @@ cy.get('#ifmail')
         }
       });
   });
+
+  cy.wait(3000);
 
  
 // Step 2: Visit the target URL where the OTP needs to be entered
@@ -170,12 +174,28 @@ cy.wait(20000);
 
 //cy.get("button[type='submit']").click();
 cy.get(':nth-child(2) > .sc-f6926cfa-0 > .sc-53066297-0 > :nth-child(1) > .sc-c5525174-1 > .bfridt > :nth-child(3)').click(); //Check title Mr
-cy.get('.sc-32aeeee-0 > .sc-c2fffe2d-1 > .sc-6e8c36d4-9').type("12122000"); //CheckDOB
+
+//CheckDOB
+cy.get('input[name="dateOfBirth"]')  // Select input by name attribute
+  .clear()                           // Clear any prefilled value
+  .type('15/08/1995');               // Type the date in DD/MM/YYYY format
+
+
 cy.get(':nth-child(3) > .sc-f6926cfa-0 > .sc-53066297-0 > .sc-c5525174-1 > .bfridt > :nth-child(2)').click(); //Life Support No
 cy.get('.sc-29e3e510-3 > .sc-c5525174-1 > .bfridt > :nth-child(2)').click(); //Click AP
 cy.get('.sc-29e3e510-3 > .sc-5f2589e-0 > :nth-child(1) > .sc-c2fffe2d-4 > .sc-c2fffe2d-0 > .sc-c2fffe2d-1 > .sc-6e8c36d4-9').type("121212"); //Type AP NO. 
-cy.get(':nth-child(2) > .sc-32aeeee-0 > .sc-c2fffe2d-1 > .sc-6e8c36d4-9').type("12122028");   //AP Expiry Date
-cy.get('.jrFhqP > .sc-c5525174-1 > .bfridt > :nth-child(2)').click();  //Concession Details No
+//AP Expiry Date
+cy.get('input[name="primary.passport_expiry_date"]')  // Select input by name attribute
+  .clear()                                           // Clear any existing value
+  .type('31/12/2030{enter}');                        // Type the date and press Enter
+                        
+  cy.wait(3000);
+
+  cy.get('div.concession label:last-child').click();   //Concession NO 
+
+
+
+//Concession Details No
 cy.get(':nth-child(6) > .sc-f6926cfa-0 > .sc-53066297-0 > .sc-c5525174-1 > .bfridt > :nth-child(2)').click(); //Business Details No
 cy.get('.sc-6392884d-0').click();  //To final step CTA
 
